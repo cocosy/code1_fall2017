@@ -22,7 +22,7 @@ void draw(){
   //rect(x,y,10,10);
     //arc( width/2, height/2, x,y,HALF_PI, PI);
 
-    fill(0,97);
+    fill(0);
     ellipse(x-30, y-30, 3+angle,3+angle);
 
     fill(232,234,0+angle,6);
