@@ -13,21 +13,13 @@ void setup(){
 
 void draw(){
  angle ++;
-  //background(230);
-  //casting a value to another type
-  //float r = random(0,4); original
-  float r = int(random(0,7));// now
- 
-  //line(r,x,r+30,y);
-  //rect(x,y,10,10);
-    //arc( width/2, height/2, x,y,HALF_PI, PI);
+  float r = int(random(0,7));
 
     fill(0);
     ellipse(x-30, y-30, 3+angle,3+angle);
 
     fill(232,234,0+angle,6);
     ellipse(x, y, 60+r+angle,60+r+angle);
-    //rotate(angle);
     
 
   
