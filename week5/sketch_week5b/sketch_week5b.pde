@@ -1,4 +1,4 @@
-int i;
+int i =0;
 
 void setup() {
   size(600, 600);
@@ -7,19 +7,20 @@ void setup() {
 void draw() {
   background(255);
   
-// for(int i = 0; i < 100; i += 10) 
-// {
-// println(i);
-//}
+  
+  while(i<10){i ++;
+ println(i);
+}
 
 
 //for(int i = 5; i<5000;i = i*2){
-//  println(i);
+//  println("2nd: "+i);
 //}
-
-
-//while(i<10){i ++;
-//println(i);
+  
+  
+// for(int i = 0; i < 100; i += 10) 
+// {
+// println("3nd: "+i);
 //}
 
 
