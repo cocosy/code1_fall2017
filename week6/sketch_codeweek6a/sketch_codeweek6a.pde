@@ -1,3 +1,5 @@
+int[] myArray = new int[60];
+int[] myList = new int[100];
 float x;
 float y;
 int angle;
@@ -9,25 +11,35 @@ void setup(){
   x = width/2;
   y = height/2;
   noStroke();
+  for (int i = 0; i < myArray.length; i++) {
+    myArray[i] = int(random(600));
+  }
+  
+  for (int i = 0; i < myList.length; i++) {
+    myList[i] = int(random(800));
+  }
 }
 
 void draw(){
  angle ++;
   float r = int(random(0,7));
+  
+    for (int i = 0; i < myArray.length; i++) {
 
     fill(0);
-    ellipse(x-30, y-30, 3+angle,3+angle);
+    ellipse(myArray[i]-30, myList[i]-30, 3+angle,3+angle);
 
-    fill(232,234,0+angle,6);
-    ellipse(x, y, 60+r+angle,60+r+angle);
+    fill(myArray[i],234,0+angle,6);
+    //ellipse(x, y, 60+r+angle,60+r+angle);
+    ellipse(myArray[i],myList[i],60+r+angle,60+r+angle);
     
-
+    }
   
   if (r == 0){
     y-= 5;
     angle+=1;
     
-  } else if (r ==1){
+  } else if (r == 1){
     x+= 5;
     angle-=1;
     
