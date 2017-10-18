@@ -26,9 +26,6 @@ void draw() {
  //trees
   if (buttonState == true) {
     
-    
-    
-  
   
   } 
  
@@ -64,6 +61,7 @@ void draw() {
     if(switchPosX>620 || switchPosX<-30){
      buttonState = false;
    switchPosX =0;}
+    
     
  //button and switch
   ellipse(buttonPosX-400,buttonPosY, switchRadius*1.2, switchRadius*1.2);
