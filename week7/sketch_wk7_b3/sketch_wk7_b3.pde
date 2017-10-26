@@ -1,62 +1,42 @@
 //import processing.pdf.*;
 PImage img;
- float[] deg = {1,2,1,2,1};
-int a=0;
+
+
 void setup() {
   size(1100, 600);
   img = loadImage("hkk.jpg");
-  //img = loadImage("1.JPG");
-  //noSmooth();
-  noStroke();
-  //for (int a=0; a < degArray.length; a++) { 
-  //  degArray[a]=a;}
+  noSmooth();
     
 }
 
 void draw(){
   background(0);
 
-  int widthStep = 4;
-  int heightStep = 10;
+  int widthStep = 3;
+  int heightStep = 5;
   
 
 
   for (int i = 0; i < width; i+=widthStep) {
+      
     for (int j = 0; j < height; j+=heightStep) {  
           color c = img.get(i, j);
-       
-      //float r = red(c);
-      //float g = green(c);
-      //float b = blue(c);
-      //if (brightness(c)>200){
+          
+      //float w = map(brightness(c),0,255,0,600);
+      //float h = map(hue(c),0,255,0,1100);
+   
+      stroke(c);
+      line(i,j+mouseX/20-mouseY/15,i+2,j-mouseX/15-mouseY/10);
+      //stroke(c);
+      //line(j+mouseX/20,i,j-mouseX/15,i+2);
         
-      pushMatrix();
-      translate(570,320);
-      //for(int b=0;b< 7; b++){
-      rotate(i-j+radians(frameCount));
-      scale(0.5);
-      fill(c);
-      //noFill();
-      triangle(i,j+(random(10)),i+9,j+4,4+i,j+9);
-       popMatrix();
+      //curveVertex(brightness(c), i+hue(c));
        
-  }}
+  }
+
+}
       
-     //}else{
-     //   pushMatrix();
-     // translate(i,j);
-     // //rotate(radians(frameCount));
-     // fill(c);
-     // rect(0,0,3,3);
-     // popMatrix();}
-      
-      
-  //     PGraphicsPDF pdf = (PGraphicsPDF) g; 
-  //if (frameCount == 3) {
-  //  exit();
-  //} else {
-  //  pdf.nextPage();  // Tell it to go to the next page 
-  //}
+     
   //  println("Finished.");
   //exit();
 }
