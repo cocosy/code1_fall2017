@@ -1,4 +1,4 @@
-import processing.pdf.*;
+//import processing.pdf.*;
 PImage img;
 
 
@@ -37,6 +37,6 @@ void draw(){
 }
       
      
-    println("Finished.");
-  exit();
+  //  println("Finished.");
+  //exit();
 }
