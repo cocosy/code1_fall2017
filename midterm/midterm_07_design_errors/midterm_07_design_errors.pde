@@ -4,8 +4,8 @@
 // fix the code to make sure that the overflow doesn't happen. 
 // you could do this via logic with the walker counter, or using an ArrayList instead of an array.
 
-Walker[] walkers = new Walker[100];
-
+//Walker[] walkers = new Walker[100];
+ArrayList<Walker> walkers = new ArrayList<Walker>();
 int whichWalker = 0;
 
 void setup() {
@@ -15,12 +15,13 @@ void setup() {
 
 void draw() {
   for (int i = 0; i < whichWalker; i++) {
-    walkers[i].update();
-    walkers[i].display();
+    Walker a = walkers.get(i);
+    a.update();
+    a.display();
   }
 
   if (mousePressed) {
-    walkers[whichWalker] = new Walker(mouseX, mouseY);
+    walkers.add(new Walker(mouseX, mouseY));
     whichWalker++;
   }
 }
