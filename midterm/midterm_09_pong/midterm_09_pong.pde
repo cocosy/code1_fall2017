@@ -24,15 +24,15 @@ float directionY =1;
 
 float boxX =100;
 float boxY =100;
-float boxW =100;
+float boxW =150;
 float boxH =50;
 
 
 
-float boxX_2 =400;
-float boxY_2 =400;
-float boxW_2 =50;
-float boxH_2 =20;
+//float boxX_2 =400;
+//float boxY_2 =400;
+//float boxW_2 =50;
+//float boxH_2 =20;
 
 
 void setup() {
@@ -65,13 +65,13 @@ if(x>boxX-r && x<boxX+boxW+r &&
    y>boxY-r && y<boxY+boxH+r){
 
          directionX = -directionX;  directionY = -directionY;}
-if(x>boxX_2-r && x<boxX_2+boxW_2+r && 
-   y>boxY_2-r && y<boxY_2+boxH_2+r){
+//if(x>boxX_2-r && x<boxX_2+boxW_2+r && 
+//   y>boxY_2-r && y<boxY_2+boxH_2+r){
 
-         directionX = -directionX;  directionY = -directionY;}
+//         directionX = -directionX;  directionY = -directionY;}
 
 
 
 rect(boxX,boxY,boxW,boxH);
-rect(boxX_2boxY_2,boxW_2,boxH_2);
+//rect(boxX_2boxY_2,boxW_2,boxH_2);
 }
