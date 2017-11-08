@@ -27,8 +27,6 @@ void draw() {
   for (int i = 75; i < 500; i+=120) {
     for (int j =75; j < 500; j+=120) {
       
-      //translating a 1D index from 2D positions = width * row + column
-      //int index = (int)sqrt(IMG_NUM) * j + i;
       image(eye[whichEye], i,j,100,100);
      
   //we've discussed now the modulo operator (%) just a little bit.

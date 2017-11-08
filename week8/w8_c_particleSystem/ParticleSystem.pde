@@ -10,7 +10,7 @@ class ParticleSystem {
   }
 
   void update() {
-    Particle b = new Particle(x, y);
+    Particle b = new Particle();
     p.add(b);
 
     for (int i = p.size()-1; i >= 0; i-=1) {
