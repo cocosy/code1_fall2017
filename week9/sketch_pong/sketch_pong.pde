@@ -235,7 +235,6 @@ class Ball {
     x += sin(dx);
 
     if (x < 0 || x > width) {
-      ellipse(x,y,30,30);
        background(random(100,255));
 
       if (x < 0) {
