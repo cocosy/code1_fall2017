@@ -1,15 +1,3 @@
-// QUESTION 9 - 
-// put together a skeleton Pong game.
-
-// create a bouncing ball that starts in the middle of the screen 
-// either use a class or independent variables, it doesn't matter
-// make it bounce only on the top and bottom walls
-// create two paddles. this can also be a class or not
-// have key presses control the up and down movement of the paddles independently
-// make the ball reverse x direction when it touches the paddles
-// return the ball to the middle of the screen with a random position when it goes off screen
-// keep score for the two players
-
 int p1Score;
 int p2Score;
 int p3Score;
@@ -247,6 +235,7 @@ class Ball {
     x += sin(dx);
 
     if (x < 0 || x > width) {
+      ellipse(x,y,30,30);
        background(random(100,255));
 
       if (x < 0) {
@@ -259,12 +248,13 @@ class Ball {
        x = width/2;
       y = height/2;
       dx = -dx;  //set a random velocity
-      dy = random(-3, 3);
-    
+      dx = random(-3, 3);
+      
   }
       
       if(y<0 || y > height){
         background(random(100,255));
+          
         if(y<0){
         p4Score++;
       }
@@ -275,25 +265,30 @@ class Ball {
       
       x = width/2;
       y = height/2;
-      dx = -dx;  //set a random velocity
+      dy = -dy;  //set a random velocity
       dy = random(-3, 3);
-     
+      
     } 
 
-    if (y < 0 || y > height) {
-      dy *= -1;
-      y += dy;
-    } else { 
-      y += dy;
-    }
+  //  if (y < 0 || y > height) {
+  //    dy *= -1;
+  //    y += dy;
+  //  } else { 
+  //    
+  //  }
+ x += dx;
+ y +=dy;
   }
 
   void checkCollisionWithPaddle(Paddle p) {
     if (x > p.x && x < p.x + p.w) {
       if (y > p.y && y < p.y + p.h) {
         dx = -dx;
+        dy = -dy;
         dy = random(-10, 10);
+     
       }
+      
     }
   }
 }
