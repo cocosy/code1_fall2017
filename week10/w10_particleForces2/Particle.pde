@@ -2,11 +2,13 @@ class Particle {
   PVector pos;
   PVector vel;
   PVector acc;
+  PVector target;
   float life;
   float maxSpeed;
 
 
   Particle(float x, float y) {
+    target = new PVector(mouseX,mouseY);
     pos = new PVector(x, y);
     vel = new PVector(random(-1, 1), random(-1, 1));
     acc = new PVector(0, 0);
@@ -27,8 +29,7 @@ class Particle {
 
   void display() {
     float s = map(life, 300, 0, 20, 0);
-    fill(150);
-    stroke(255);
+  
     ellipse(pos.x, pos.y, s, s);
   }
 
@@ -42,12 +43,20 @@ class Particle {
   
   void addRepel(float x, float y, float maxForce) {
      float angle = atan2(pos.y-y, pos.x-x);
-    float forceStr = maxForce / (1 + dist(pos.x, x, pos.y, y));
+    float forceStr =  1/dist(pos.x, x, pos.y, y)*maxForce;
     PVector newForce = new PVector(cos(angle), sin(angle));
     newForce = newForce.mult(forceStr);
     acc.add(newForce);
     
   }
   
- void addT
+ void addGather(){
+   float angle = atan2(target.y - pos.y, target.x - pos.x);
+   float forceStr = pos.dist(target) *0.05;
+   PVector newForce = new PVector(cos(angle), sin(angle));
+    newForce = newForce.mult(forceStr);
+    acc.add(newForce);
+   
+   
+ }
 }
