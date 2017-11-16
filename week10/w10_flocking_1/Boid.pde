@@ -8,6 +8,7 @@ class Boid {
   float r;
   float maxforce;    // Maximum steering force
   float maxspeed;    // Maximum speed
+  
 
     Boid(float x, float y) {
  
@@ -22,7 +23,7 @@ class Boid {
     position = new PVector(x, y);
     r = 4.0;
     maxspeed = random(1,4);
-    maxforce = 0.03;
+    maxforce = 0.07;
     
     
     //PVector mouse = new PVector(mouseX,mouseY);
@@ -50,8 +51,8 @@ class Boid {
     PVector coh = cohesion(boids);   // Cohesion
     // Arbitrarily weight these forces
     sep.mult(5.0);
-    ali.mult(3.0);
-    coh.mult(2.5);
+    ali.mult(2.0);
+    coh.mult(3.0);
     // Add the force vectors to acceleration
     applyForce(sep);
     applyForce(ali);
@@ -89,7 +90,7 @@ class Boid {
 
   void render() {
     // Draw a triangle rotated in the direction of velocity
-    float theta = velocity.x + radians(10);
+    float theta = velocity.x + radians(300);
     // heading2D() above is now heading() but leaving old syntax until Processing.js catches up
     
     fill(200, 100);
