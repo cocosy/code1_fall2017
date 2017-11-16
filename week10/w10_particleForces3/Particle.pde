@@ -49,7 +49,7 @@ class Particle {
   void addRepel(float x, float y, float maxForce) {
      float angle = atan2(pos.y-y, pos.x-x);
     float forceStr = maxForce*2 / (1 + dist(pos.x, x, pos.y, y));
-    PVector newForce = new PVector(cos(angle), tan(angle));
+    PVector newForce = new PVector(cos(angle), sin(angle));
     newForce = newForce.mult(forceStr);
     acc.add(newForce);
     
