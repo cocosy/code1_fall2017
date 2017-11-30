@@ -65,6 +65,8 @@ void drawIntro(){
 
 
 void drawScene1() {
+  
+  
 }
 
 void drawScene2() {
