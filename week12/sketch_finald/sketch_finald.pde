@@ -43,6 +43,7 @@ void draw(){
     drawEnding();
   default:
     break;
+    
   }
 }
 
@@ -159,4 +160,10 @@ void mousePressed(){
     b[i].update();
     b[i].display();
   }
+}
+
+
+void keyPressed() {
+  state++;
+  if (state > 5) state = 1;
 }
