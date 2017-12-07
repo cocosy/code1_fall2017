@@ -43,6 +43,7 @@ void draw(){
     drawEnding();
   default:
     break;
+    
   }
 }
 
@@ -65,6 +66,8 @@ void drawIntro(){
 
 
 void drawScene1() {
+  
+  
 }
 
 void drawScene2() {
@@ -149,8 +152,6 @@ class Ball {
 }
 
 void mousePressed(){
-if (mouseX > width/2-r/2 && mouseX < width/2+r/2 &&
-        mouseY > height/2-r/2 && mouseY<height/2+r/2) {
   r=-1;
    background(254,204,200);
   //r=10;
@@ -158,5 +159,11 @@ if (mouseX > width/2-r/2 && mouseX < width/2+r/2 &&
   for (int i = 0; i < NUM_CIRCLES; i++) {
     b[i].update();
     b[i].display();
-  
-}}}
+  }
+}
+
+
+void keyPressed() {
+  state++;
+  if (state > 5) state = 1;
+}
