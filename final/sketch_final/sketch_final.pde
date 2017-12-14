@@ -7,6 +7,7 @@ int r=1;
 int n;
 int state = 0;
 int narrator;
+int R =250;
 
 int Xball=200;
 int Yball=200;
@@ -140,7 +141,7 @@ void drawIntro() {
 
 //scene 1
 void drawScene1() {
-  r=1;
+  //r=1;
   eyeR = mouseX;
   eyeL = mouseY;
   
@@ -451,8 +452,9 @@ void drawScene5() {
   }
   
  if (r+350 <= 110){
+
     state +=1;
-    r=600;
+ 
   }
   
   
@@ -461,16 +463,22 @@ void drawScene5() {
 
 //END
 void drawEnding() {
-
+  r=R;
+  eyeR = width/2;
+  eyeL =height/2;
   background(254, 204, 200); 
-  ellipse(width/2, height/2, r, r);
-  r--;
-  
+  fill(200);
+  ellipse(width/2, height/2,  R, R);
+  drawEye();
+  R--;
+  if(R<=110){
+    R=110;
   textSize(24);
-  fill(0);
+ 
   textAlign(CENTER);
-  text("END", height/2, width/2);
-  
+  fill(0);
+  text("END", height/2, width/2+35);
+  }
   
 }
 
@@ -493,9 +501,9 @@ void Text2() {
   textSize(24);
   fill(0);
   textAlign(CENTER);
-  text("Just want to let you know that:", height/2, width/2-90);
+  text("Just want to let you know:", height/2, width/2-90);
   text("BigBabol hate people to change its things", height/2, width/2-60);
-  text("Time out", height/2, width/2);
+  text("Time out...", height/2, width/2);
   text("Press ALT to start again", height/2, width/2+30);
   fill(n, 204, 200);
   text("Hint: Under the drawer.", height/2, width/2+60);
