@@ -37,12 +37,19 @@ final int NUM_CIRCLES = 100;
 float[] x = new float[NUM_CIRCLES];
 float[] y = new float[NUM_CIRCLES];
 
+//import lib
+import ddf.minim.*;
+
+Minim minim;
+AudioPlayer piano;
 
 //setup
 void setup() {
   size(600, 600);
   background(254, 204, 200);
   noStroke();
+  minim = new Minim(this);
+  piano = minim.loadFile("piano.mp3", 2048);
   n=255;
   bug = loadImage("bug.png");
   bg1 = loadImage("side1.png");
@@ -75,6 +82,11 @@ void draw() {
     break;
   case 3:
     drawScene3();
+    for(int i = 0; i < piano.bufferSize() - 1; i++)
+  {
+    line(i, 50  + piano.left.get(i)*50,  i+1, 50  + piano.left.get(i+1)*50);
+    line(i, 150 + piano.right.get(i)*50, i+1, 150 + piano.right.get(i+1)*50);
+  }
     break;
   case 4:
   //drawSceneTwo();
@@ -110,6 +122,7 @@ void drawIntro() {
       b[i].display();
     }
     Text();
+    r=1;
   } else {
     r++;
     drawEye();
@@ -192,21 +205,32 @@ void drawScene1() {
       r=0;
     }else if((eyeR > 182 && eyeR < 182 + 25 &&
       eyeL > 294 && eyeL < 294 + 10)){
-        
      background(200,200,200);
      textSize(24);
      textAlign(CENTER);
-     fill(n, 204, 200);
+     fill(255, 204, 200);
      text("Hint: Under the drawer.", height/2, width/2);
-  
+     text("Don't move/change My things.", height/2, width/2-30);
+  text("Don't move/change My things.", height/2, width/2+30);
+  text("Don't move/change My things.", height/2, width/2-60);
+  text("Don't move/change My things.", height/2, width/2+60);
+  text("Don't move/change My things.", height/2, width/2-90);
+  text("Don't move/change My things.", height/2, width/2+90);
+    text("BigBabol can tell the difference.", height/2, width/2+120);
    }else if((eyeR > 182 && eyeR < 182 + 25 &&
       eyeL > 343 && eyeL < 343 + 10)){
      background(200,200,200);
-     background(200,200,200);
      textSize(24);
      textAlign(CENTER);
-     fill(n, 204, 200);
-     text("Hint is in the other knob above.", height/2, width/2);
+     fill(255, 204, 200);
+     text("The Hint is in the other knob above.SAD.", height/2, width/2);
+      text("Don't move/change My things.", height/2, width/2-30);
+  text("Don't move/change My things.", height/2, width/2+30);
+  text("Don't move/change My things.", height/2, width/2-60);
+  text("Don't move/change My things.", height/2, width/2+60);
+  text("Don't move/change My things.", height/2, width/2-90);
+  text("Don't move/change My things.", height/2, width/2+90);
+    text("BigBabol can tell the difference.", height/2, width/2+120);
    }
   }
   if (r>600 ||r<0)
@@ -234,9 +258,8 @@ void drawScene2(){
 
 //scene2
 void drawScene3() {
-  //imageMode(CENTER);
-
-// 
+ switchW = 60;
+ switchH =60;
   background(room2);
   //background();
   //image(room2,0,0);
@@ -245,36 +268,32 @@ void drawScene3() {
   println(n);
   //  imageMode(CENTER);
   //image(cover,mouseX,mouseY,width,height);
-  
+ 
   eyeR = mouseX;
   eyeL = mouseY;
    
   
- //  if (r>600 ||r <= 0){
- //   background(254, 204, 200); 
- //   for (int i = 0; i < NUM_CIRCLES; i++) {
- //     b[i].update();
- //     b[i].display();
- //   }
- //     background(254, 204, 200);
- //   state+=1;
- ////Text3();
- // } else {
- 
- // }
+   if (r>600 ||r <= 0){
+    background(254, 204, 200); 
+    for (int i = 0; i < NUM_CIRCLES; i++) {
+      b[i].update();
+      b[i].display();
+    }
   
-  fill(0);
+   if(mousePressed == true){r=1;
+  } }
+frameRate(40);
+  fill(255);
+  text("CLickkkkk the Lights",width/2,height/2);
   rect(switchW+random(0, 600), switchH+random(0, 600), switchW, switchH);
   if (mousePressed == true) 
   {if (( eyeR > switchW+random(0, 600) && eyeR < switchW+random(0, 600) + switchW &&
       eyeL > switchH+random(0, 600) && eyeL < switchH+random(0, 600) + switchH) ) 
       { 
-      //background(255);
-n-=10;
-r-=20;
+      background(255);
+    n-=10;
+    r-=20;
 
-      ellipse(eyeR, eyeL, r, r);
-      drawEye();
       //state +=2;
   
     }
@@ -283,16 +302,35 @@ r-=20;
  if(r>450){
     fill(255,100,100);
   };
+  //rect(510,370,63,197);
   
   if (n<=130){
-    r=200;
-   fill(254, 204, 200);}
+    r=50;
+    fill(255);
+    text("Bigbabol so happy.",width/2,330);
+    text("Bigbabol'd like to play piano for you (Click it)",width/2,360);
+   fill(254, 204, 200);
+   
+  if (mousePressed == true) {if (( eyeR > 510 && eyeR < 510 + 63 &&
+      eyeL > 370 && eyeL < 370 + 197) ) 
+     {
+    // simply call loop again to resume playing from where it was paused
+    piano.loop();
+  }
+      }
+    }
+    
+
+ 
    
   if(n<=30){
        state+=2;}
        
   ellipse(eyeR, eyeL, r, r);
   drawEye();
+      if(r>600){
+        textSize(18);
+    text("BigBabol triggered. Press mouse to try again",width/2,height/2);}
    r++;
 }
 
@@ -315,7 +353,7 @@ r-=20;
 
 //scene3
 void drawScene4() {
-
+ piano.pause();
   background(255);
   ellipse(Xball, Yball, c, c);
   for (int i = 0; i < NUM_WALKERS; i++) {
