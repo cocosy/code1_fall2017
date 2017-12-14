@@ -1,6 +1,10 @@
 PImage bug;
-PImage cover;
+PImage bg1;
+PImage bg2;
+PImage bg3;
+PImage room2;
 int r=1;
+int n;
 int state = 0;
 int narrator;
 
@@ -39,8 +43,12 @@ void setup() {
   size(600, 600);
   background(254, 204, 200);
   noStroke();
+  n=255;
   bug = loadImage("bug.png");
-  cover = loadImage("cover.png");
+  bg1 = loadImage("side1.png");
+  bg2 = loadImage("side2.png");
+  bg3 = loadImage("side3.png");
+  room2 = loadImage("room2.png");
   for (int i = 0; i < b.length; i++) {
     b[i] = new Ball(random(0, 600), random(0, 600), color(map(i, 0, b.length, 0, 255)));
   };
@@ -69,12 +77,17 @@ void draw() {
     drawScene3();
     break;
   case 4:
-    drawScene4();
+  //drawSceneTwo();
+   
     break;
   case 5:
-    drawScene5();
+   drawScene4();
+   
     break;
   case 6:
+   drawScene5();
+  break;
+  case 7:
     drawEnding();
   default:
     break;
@@ -117,13 +130,13 @@ void drawScene1() {
   eyeL = mouseY;
   
   background(255);
-  float switch1x = 50+random(10, 50);
+  float switch1x = 20+random(10, 50);
   float switch1y = 260;
 
-  float switch2x = 200;
+  float switch2x = 250;
   float switch2y = 260+random(10, 30);
 
-  float switch3x = 350;
+  float switch3x = 400;
   float switch3y = 260+random(50, 70);
 
   fill(200, 200, 200);
@@ -131,8 +144,15 @@ void drawScene1() {
     fill(255,100,100);
   };
   ellipse(eyeR, eyeL, r, r);
+  
+  fill(0);
+  textAlign(CENTER);
+  text("Ughhhh, someone has messed up my living room", width/2, 30);
+  text("Collect hints from the drawers and find the DIFFERENCE", width/2, 60);
+  text("Memorize the positions & click",width/2, 90);
 
   drawEye();
+  textSize(15);
 
   rect(switch1x, switch1y, switchW, switchH);
   rect(switch2x, switch2y, switchW, switchH);
@@ -142,26 +162,52 @@ void drawScene1() {
   if (eyeR > switch1x && eyeR < switch1x + switchW &&
     eyeL > switch1y && eyeL < switch1y + switchH) {
     background(20, 100, 20);
-    r+=5;
-        image(cover,0,0);
-    rect(switch1y, switch2x, switchW, switchH);
+    r+=1;
+    image(bg1,0,0);
+    rect(182, 294, 25, 10);
+    
   } else if (eyeR > switch2x && eyeR< switch2x + switchW &&
     eyeL > switch2y && eyeL < switch2y + switchH) {
     background(100, 220, 52); 
-    r+=5;
+    r+=2;
+    image(bg3,0,0);
+    fill(168,0,0);
+    //ellipse(92,554,19,26);
+       
   } else if (eyeR > switch3x && eyeR < switch3x + switchW &&
     eyeL > switch3y && eyeL< switch3y + switchH) {
     background(23, 190, 240);
-    r+=5;
+    r+=1;
+    image(bg2,0,0);
+    rect(182, 343, 25, 10);
   }
 
   if (mousePressed == true) {
-    if ((eyeR > switch1y && eyeR < switch1y + switchW &&
-      eyeL > switch2x && eyeL < switch2x + switchH) )
-    {
+    if ((eyeR > 91-10 && eyeR < 91 + 10 &&
+      eyeL > 554-14 && eyeL < 554 + 14) )
+    { fill(168,0,0);
+      ellipse(92,554,19,26);
       background(0);
       state +=2;
-    }
+      r=0;
+    }else if((eyeR > 182 && eyeR < 182 + 25 &&
+      eyeL > 294 && eyeL < 294 + 10)){
+        
+     background(200,200,200);
+     textSize(24);
+     textAlign(CENTER);
+     fill(n, 204, 200);
+     text("Hint: Under the drawer.", height/2, width/2);
+  
+   }else if((eyeR > 182 && eyeR < 182 + 25 &&
+      eyeL > 343 && eyeL < 343 + 10)){
+     background(200,200,200);
+     background(200,200,200);
+     textSize(24);
+     textAlign(CENTER);
+     fill(n, 204, 200);
+     text("Hint is in the other knob above.", height/2, width/2);
+   }
   }
   if (r>600 ||r<0)
   {state+=1;
@@ -174,48 +220,96 @@ void drawScene1() {
 //Scene1 ending
 void drawScene2(){
   
+  
      background(254, 204, 200);
     for (int i = 0; i < NUM_CIRCLES; i++) {
       b[i].update();
       b[i].display();
     };
     Text2();
+    r=0;
 }
 
 
 
 //scene2
 void drawScene3() {
-  background(0);
+  //imageMode(CENTER);
+
+// 
+  background(room2);
+  //background();
+  //image(room2,0,0);
+  fill(255-n,n);
+  rect(0,0,600,600);
+  println(n);
   //  imageMode(CENTER);
   //image(cover,mouseX,mouseY,width,height);
-  fill(255, 99);
+  
   eyeR = mouseX;
   eyeL = mouseY;
-  r=100;
-  ellipse(eyeR, eyeL, r, r);
-  drawEye();
-
+   
+  
+ //  if (r>600 ||r <= 0){
+ //   background(254, 204, 200); 
+ //   for (int i = 0; i < NUM_CIRCLES; i++) {
+ //     b[i].update();
+ //     b[i].display();
+ //   }
+ //     background(254, 204, 200);
+ //   state+=1;
+ ////Text3();
+ // } else {
+ 
+ // }
+  
   fill(0);
-  rect(switchW+random(0, 300), switchH, switchW, switchH);
+  rect(switchW+random(0, 600), switchH+random(0, 600), switchW, switchH);
   if (mousePressed == true) 
-  {
-    if (( eyeR > switchW && eyeR < switchW + switchW &&
-      eyeL > switchH && eyeL < switchH + switchH) ) 
+  {if (( eyeR > switchW+random(0, 600) && eyeR < switchW+random(0, 600) + switchW &&
+      eyeL > switchH+random(0, 600) && eyeL < switchH+random(0, 600) + switchH) ) 
       { 
-      background(255);
-      
+      //background(255);
+n-=10;
+r-=20;
 
       ellipse(eyeR, eyeL, r, r);
       drawEye();
-      state +=1;
+      //state +=2;
   
     }
   }
+  fill(255, 99);
+ if(r>450){
+    fill(255,100,100);
+  };
+  
+  if (n<=130){
+    r=200;
+   fill(254, 204, 200);}
+   
+  if(n<=30){
+       state+=2;}
+       
+  ellipse(eyeR, eyeL, r, r);
+  drawEye();
+   r++;
 }
 
 
+//scene2 ending
+//void drawSceneTwo(){
 
+//  r=1;
+//  textSize(24);
+//  fill(0);
+//  textAlign(CENTER);
+//  text("Time out", height/2, width/2);
+//  //fill(()
+//  text("Press ALT to start again", height/2, width/2+30);
+//  fill(20);
+//  text("Press SHIFT to start again", height/2, width/2+30);
+//}
 
 
 
@@ -330,13 +424,14 @@ void drawEnding() {
 
 
 void Text() {
-  textSize(24);
+  textSize(20);
   fill(0);
   textAlign(CENTER);
-  text("Welcome to my home and play with me", height/2, width/2-80);
-  text("I'm a quick temper,", height/2, width/2-40);
-  text("and am afraid of lots of things on Earth.", height/2,width/2);
-  text("So I may explode and disappear some time!", height/2, width/2+40);
+  text("Hello.I'm BigBabol!", height/2, width/2-120);
+  text("Welcome to BigBabol's home.", height/2, width/2-80);
+  text("BigBabol is very short tempered,", height/2, width/2-40);
+  text("and is afraid of lots of things on Earth,", height/2,width/2);
+  text("BigBabol may explode and disappear sometime!", height/2, width/2+40);
   text("Discover around & touch things carefully",height/2, width/2+80);
   fill(150);
   text("GOOD (Press Shift) LUCK", height/2, width/2+120);
@@ -346,9 +441,15 @@ void Text2() {
   textSize(24);
   fill(0);
   textAlign(CENTER);
+  text("Just want to let you know that:", height/2, width/2-90);
+  text("BigBabol hate people to change its things", height/2, width/2-60);
   text("Time out", height/2, width/2);
-  text("Press ALT", height/2, width/2+30);
+  text("Press ALT to start again", height/2, width/2+30);
+  fill(n, 204, 200);
+  text("Hint: Under the drawer.", height/2, width/2+60);
+  text("or you can press SHIFT to visit to the next room", height/2, width/2+90);
 }
+
 
 
 
@@ -384,6 +485,7 @@ void keyPressed() {
       state+=1;
     } else if (keyCode == ALT) {
       state-=1;
+      n-=7;
     } else if (keyCode == UP) {
       Yball += 10;
       z +=1;
