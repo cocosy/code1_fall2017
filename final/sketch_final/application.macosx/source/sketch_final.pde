@@ -162,9 +162,11 @@ void drawScene1() {
   
   fill(0);
   textAlign(CENTER);
+  textSize(18);
   text("Ughhhh, someone has messed up my living room", width/2, 70);
-  text("Collect hints from the drawers and find the DIFFERENCE", width/2, 100);
-  text("Memorize the positions & click",width/2, 130);
+  text("Collect hints from the drawers,", width/2, 100);
+  text("and find the DIFFERENCE(except fish)", width/2, 130);
+  text("Memorize the positions & click",width/2, 160);
 
   drawEye();
   textSize(15);
@@ -211,7 +213,7 @@ void drawScene1() {
      textSize(24);
      textAlign(CENTER);
      fill(255, 204, 200);
-     text("Hint: Under the drawer.", height/2, width/2);
+     text("Hint: Something Under the drawer has changed.", height/2, width/2);
      text("Don't move/change My things.", height/2, width/2-30);
   text("Don't move/change My things.", height/2, width/2+30);
   text("Don't move/change My things.", height/2, width/2-60);
@@ -225,7 +227,7 @@ void drawScene1() {
      textSize(24);
      textAlign(CENTER);
      fill(255, 204, 200);
-     text("The Hint is in the other knob above.SAD.", height/2, width/2);
+     text("The Hint is in the other drawer above.SAD.", height/2, width/2);
       text("Don't move/change My things.", height/2, width/2-30);
   text("Don't move/change My things.", height/2, width/2+30);
   text("Don't move/change My things.", height/2, width/2-60);
@@ -348,9 +350,10 @@ void drawScene4() {
  piano.pause();
   background(room3);
   fill(200);
-  text("Use the Arrow Keys to",width/2,height/3+60);
-  text("walk to the EXIT",width/2,height/3+90);
-  text("Watch out bugggs",width/2,height/3+120);
+  textSize(22);
+  text("Use the Arrow Keys to",width/2,height/3);
+  text("walk to the EXIT",width/2,height/3+30);
+  text("Watch out bugggs",width/2,height/3+60);
   ellipse(Xball, Yball, c, c);
   drawEye();
   //if(c>25){
@@ -392,7 +395,7 @@ void drawScene4() {
     if (Xball > PinkX && Xball< PinkX + Siz &&
       Yball > PinkY && Yball < PinkY + Siz) {
       background(254, 204, 200);
-     c -=1 ;
+     c =75 ;
      fill(255);
     text( "BigBaBol LOVE PINK :0",width/2,height/2);
       //state -=1;
