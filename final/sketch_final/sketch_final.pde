@@ -22,6 +22,7 @@ float ballX =300;
 float ballY =100;
 float dirX =5;
 float dirY =4;
+float frameZ =0;
 
 
 
@@ -122,7 +123,7 @@ void drawIntro() {
       b[i].display();
     }
     Text();
-    r=1;
+    //r=1;
   } else {
     r++;
     drawEye();
@@ -139,6 +140,7 @@ void drawIntro() {
 
 //scene 1
 void drawScene1() {
+  r=1;
   eyeR = mouseX;
   eyeL = mouseY;
   
@@ -153,7 +155,8 @@ void drawScene1() {
   float switch3y = 260+random(50, 70);
 
   fill(200, 200, 200);
-  if(r>400){
+  if(r>400)
+  {
     fill(255,100,100);
   };
   ellipse(eyeR, eyeL, r, r);
@@ -287,14 +290,13 @@ frameRate(40);
   text("CLickkkkk the Lights",width/2,height/2);
   rect(switchW+random(0, 600), switchH+random(0, 600), switchW, switchH);
   if (mousePressed == true) 
-  {if (( eyeR > switchW+random(0, 600) && eyeR < switchW+random(0, 600) + switchW &&
+  {if (( 
+  eyeR > switchW+random(0, 600) && eyeR < switchW+random(0, 600) + switchW &&
       eyeL > switchH+random(0, 600) && eyeL < switchH+random(0, 600) + switchH) ) 
       { 
       background(255);
     n-=10;
     r-=20;
-
-      //state +=2;
   
     }
   }
@@ -319,10 +321,6 @@ frameRate(40);
   }
       }
     }
-    
-
- 
-   
   if(n<=30){
        state+=2;}
        
@@ -335,27 +333,24 @@ frameRate(40);
 }
 
 
-//scene2 ending
-//void drawSceneTwo(){
-
-//  r=1;
-//  textSize(24);
-//  fill(0);
-//  textAlign(CENTER);
-//  text("Time out", height/2, width/2);
-//  //fill(()
-//  text("Press ALT to start again", height/2, width/2+30);
-//  fill(20);
-//  text("Press SHIFT to start again", height/2, width/2+30);
-//}
-
 
 
 //scene3
 void drawScene4() {
+ switchH =40;
+ switchW =100;
  piano.pause();
-  background(255);
+  background(254, 204, 200);
+  text("Sorry Garden,",width/2,height/3);
+  text("Bigbabol hate the garden because of bugs",width/2,height/3+30);
+  text("Use the Arrow Keys to",width/2,height/3+60);
+  text("walk to the ENTRANCE",width/2,height/3+90);
+  text("Watch out bugggs",width/2,height/3+120);
+  fill(20);
   ellipse(Xball, Yball, c, c);
+  if(c>25){
+  fill(255);
+  ellipse(Xball, Yball, 4, 4);}
   for (int i = 0; i < NUM_WALKERS; i++) {
     int r = int(random(5));
 
@@ -378,17 +373,17 @@ void drawScene4() {
     }
     image(bug, imgX[i], imgY[i]);
  
-    if (Xball > imgX[i] && Xball+r/2 < imgX[i] + 104 &&
-      Yball > imgY[i] && Yball+r/2 < imgY[i] + 20) {
+    if (Xball > imgX[i] && Xball+c/2 < imgX[i] + 104 &&
+      Yball > imgY[i] && Yball+c/2 < imgY[i] + 20) {
       background(20, 100, 20);
 
       state -=1;
     }
   }
 
-  rect(switchW, switchH, switchW, switchH);
-  if (( Xball > switchW && Xball < switchW + switchW &&
-    Yball > switchH && Yball < switchH + switchH) ) { 
+  rect(200, 480, switchW+c, switchH+c);
+  if (( Xball+c/2 >200 && Xball-c/2 < 200 + switchW+c &&
+    Yball+c/2 > 480 && Yball-c/2 < 480 + switchH+c) ) { 
     state +=1;
   }
 }
@@ -396,14 +391,18 @@ void drawScene4() {
 
 //scene4
 void drawScene5() {
- 
   background(254, 204, 200); 
+  fill(255);
+  textSize(22);
+  text("Use the Paddle to help Bigbabol exercise",width/2,height/2);
+      text("Bigbabol hate to be overweight",width/2,height/2+30);
+  fill(200);
   ellipse(ballX, ballY, r+350, r+350);
     eyeR = int(ballX);
     eyeL = int(ballY);
   drawEye();
   fill(200);
-  rect(mouseX, height-20, 100, 20);
+  rect(mouseX, height-20, 200, 20);
   //bottom
   if (ballY>= height)
   {
@@ -421,6 +420,13 @@ void drawScene5() {
     r = r-10;
     dirY =-4;
     ballY += dirY;
+    frameZ += 2;
+    frameRate(60+frameZ);
+    println(60+frameZ);
+   fill(0);
+   textSize(38);
+   //fill(255,100,100);
+    text("Bigbabol is so happy",width/2,height/2-40);
   }
   // other situations
   else
@@ -444,9 +450,12 @@ void drawScene5() {
     ballX+= dirX;
   }
   
-  if (r == 20){
+ if (r+350 <= 110){
     state +=1;
+    r=600;
   }
+  
+  
 }
 
 
@@ -454,10 +463,15 @@ void drawScene5() {
 void drawEnding() {
 
   background(254, 204, 200); 
+  ellipse(width/2, height/2, r, r);
+  r--;
+  
   textSize(24);
   fill(0);
   textAlign(CENTER);
   text("END", height/2, width/2);
+  
+  
 }
 
 
@@ -527,7 +541,7 @@ void keyPressed() {
     } else if (keyCode == UP) {
       Yball += 10;
       z +=1;
-      c+=10;
+      c+=5;
     } else if (keyCode == DOWN) {
       Yball -= 10;
       z -=1;
