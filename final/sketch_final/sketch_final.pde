@@ -91,17 +91,13 @@ void draw() {
   }
     break;
   case 4:
+   drawScene4();
   //drawSceneTwo();
-   
     break;
   case 5:
-   drawScene4();
-   
+  drawScene5();
     break;
   case 6:
-   drawScene5();
-  break;
-  case 7:
     drawEnding();
   default:
     break;
@@ -124,7 +120,7 @@ void drawIntro() {
       b[i].display();
     }
     Text();
-    //r=1;
+    r=0;
   } else {
     r++;
     drawEye();

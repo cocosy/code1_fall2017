@@ -25,6 +25,7 @@ int r=1;
 int n;
 int state = 0;
 int narrator;
+int R =250;
 
 int Xball=200;
 int Yball=200;
@@ -40,6 +41,7 @@ float ballX =300;
 float ballY =100;
 float dirX =5;
 float dirY =4;
+float frameZ =0;
 
 
 
@@ -107,17 +109,13 @@ public void draw() {
   }
     break;
   case 4:
+   drawScene4();
   //drawSceneTwo();
-   
     break;
   case 5:
-   drawScene4();
-   
+  drawScene5();
     break;
   case 6:
-   drawScene5();
-  break;
-  case 7:
     drawEnding();
   default:
     break;
@@ -140,6 +138,7 @@ public void drawIntro() {
       b[i].display();
     }
     Text();
+    r=0;
   } else {
     r++;
     drawEye();
@@ -156,6 +155,7 @@ public void drawIntro() {
 
 //scene 1
 public void drawScene1() {
+  //r=1;
   eyeR = mouseX;
   eyeL = mouseY;
   
@@ -170,7 +170,8 @@ public void drawScene1() {
   float switch3y = 260+random(50, 70);
 
   fill(200, 200, 200);
-  if(r>400){
+  if(r>400)
+  {
     fill(255,100,100);
   };
   ellipse(eyeR, eyeL, r, r);
@@ -227,7 +228,13 @@ public void drawScene1() {
      textAlign(CENTER);
      fill(255, 204, 200);
      text("Hint: Under the drawer.", height/2, width/2);
-  
+     text("Don't move/change My things.", height/2, width/2-30);
+  text("Don't move/change My things.", height/2, width/2+30);
+  text("Don't move/change My things.", height/2, width/2-60);
+  text("Don't move/change My things.", height/2, width/2+60);
+  text("Don't move/change My things.", height/2, width/2-90);
+  text("Don't move/change My things.", height/2, width/2+90);
+    text("BigBabol can tell the difference.", height/2, width/2+120);
    }else if((eyeR > 182 && eyeR < 182 + 25 &&
       eyeL > 343 && eyeL < 343 + 10)){
      background(200,200,200);
@@ -235,6 +242,13 @@ public void drawScene1() {
      textAlign(CENTER);
      fill(255, 204, 200);
      text("The Hint is in the other knob above.SAD.", height/2, width/2);
+      text("Don't move/change My things.", height/2, width/2-30);
+  text("Don't move/change My things.", height/2, width/2+30);
+  text("Don't move/change My things.", height/2, width/2-60);
+  text("Don't move/change My things.", height/2, width/2+60);
+  text("Don't move/change My things.", height/2, width/2-90);
+  text("Don't move/change My things.", height/2, width/2+90);
+    text("BigBabol can tell the difference.", height/2, width/2+120);
    }
   }
   if (r>600 ||r<0)
@@ -262,9 +276,8 @@ public void drawScene2(){
 
 //scene2
 public void drawScene3() {
-  //imageMode(CENTER);
-
-// 
+ switchW = 60;
+ switchH =60;
   background(room2);
   //background();
   //image(room2,0,0);
@@ -273,37 +286,32 @@ public void drawScene3() {
   println(n);
   //  imageMode(CENTER);
   //image(cover,mouseX,mouseY,width,height);
-  
+ 
   eyeR = mouseX;
   eyeL = mouseY;
    
   
- //  if (r>600 ||r <= 0){
- //   background(254, 204, 200); 
- //   for (int i = 0; i < NUM_CIRCLES; i++) {
- //     b[i].update();
- //     b[i].display();
- //   }
- //     background(254, 204, 200);
- //   state+=1;
- ////Text3();
- // } else {
- 
- // }
+   if (r>600 ||r <= 0){
+    background(254, 204, 200); 
+    for (int i = 0; i < NUM_CIRCLES; i++) {
+      b[i].update();
+      b[i].display();
+    }
   
-  fill(0);
+   if(mousePressed == true){r=1;
+  } }
+frameRate(40);
+  fill(255);
+  text("CLickkkkk the Lights",width/2,height/2);
   rect(switchW+random(0, 600), switchH+random(0, 600), switchW, switchH);
   if (mousePressed == true) 
-  {if (( eyeR > switchW+random(0, 600) && eyeR < switchW+random(0, 600) + switchW &&
+  {if (( 
+  eyeR > switchW+random(0, 600) && eyeR < switchW+random(0, 600) + switchW &&
       eyeL > switchH+random(0, 600) && eyeL < switchH+random(0, 600) + switchH) ) 
       { 
-      //background(255);
-n-=10;
-r-=20;
-
-      ellipse(eyeR, eyeL, r, r);
-      drawEye();
-      //state +=2;
+      background(255);
+    n-=10;
+    r-=20;
   
     }
   }
@@ -311,55 +319,53 @@ r-=20;
  if(r>450){
     fill(255,100,100);
   };
+  //rect(510,370,63,197);
   
   if (n<=130){
     r=50;
+    fill(255);
+    text("Bigbabol so happy.",width/2,330);
+    text("Bigbabol'd like to play piano for you (Click it)",width/2,360);
    fill(254, 204, 200);
-   if (mousePressed == true) {if (( eyeR > 510 && eyeR < 510 + 63 &&
+   
+  if (mousePressed == true) {if (( eyeR > 510 && eyeR < 510 + 63 &&
       eyeL > 370 && eyeL < 370 + 197) ) 
-      { if ( piano.isPlaying() )
-  {
-   piano.pause();
-  }
-  else
-  {
+     {
     // simply call loop again to resume playing from where it was paused
     piano.loop();
   }
       }
     }
- }
-   
   if(n<=30){
        state+=2;}
        
   ellipse(eyeR, eyeL, r, r);
   drawEye();
+      if(r>600){
+        textSize(18);
+    text("BigBabol triggered. Press mouse to try again",width/2,height/2);}
    r++;
 }
 
-
-//scene2 ending
-//void drawSceneTwo(){
-
-//  r=1;
-//  textSize(24);
-//  fill(0);
-//  textAlign(CENTER);
-//  text("Time out", height/2, width/2);
-//  //fill(()
-//  text("Press ALT to start again", height/2, width/2+30);
-//  fill(20);
-//  text("Press SHIFT to start again", height/2, width/2+30);
-//}
 
 
 
 //scene3
 public void drawScene4() {
-
-  background(255);
+ switchH =40;
+ switchW =100;
+ piano.pause();
+  background(254, 204, 200);
+  text("Sorry Garden,",width/2,height/3);
+  text("Bigbabol hate the garden because of bugs",width/2,height/3+30);
+  text("Use the Arrow Keys to",width/2,height/3+60);
+  text("walk to the ENTRANCE",width/2,height/3+90);
+  text("Watch out bugggs",width/2,height/3+120);
+  fill(20);
   ellipse(Xball, Yball, c, c);
+  if(c>25){
+  fill(255);
+  ellipse(Xball, Yball, 4, 4);}
   for (int i = 0; i < NUM_WALKERS; i++) {
     int r = PApplet.parseInt(random(5));
 
@@ -382,17 +388,17 @@ public void drawScene4() {
     }
     image(bug, imgX[i], imgY[i]);
  
-    if (Xball > imgX[i] && Xball+r/2 < imgX[i] + 104 &&
-      Yball > imgY[i] && Yball+r/2 < imgY[i] + 20) {
+    if (Xball > imgX[i] && Xball+c/2 < imgX[i] + 104 &&
+      Yball > imgY[i] && Yball+c/2 < imgY[i] + 20) {
       background(20, 100, 20);
 
       state -=1;
     }
   }
 
-  rect(switchW, switchH, switchW, switchH);
-  if (( Xball > switchW && Xball < switchW + switchW &&
-    Yball > switchH && Yball < switchH + switchH) ) { 
+  rect(200, 480, switchW+c, switchH+c);
+  if (( Xball+c/2 >200 && Xball-c/2 < 200 + switchW+c &&
+    Yball+c/2 > 480 && Yball-c/2 < 480 + switchH+c) ) { 
     state +=1;
   }
 }
@@ -400,14 +406,18 @@ public void drawScene4() {
 
 //scene4
 public void drawScene5() {
- 
   background(254, 204, 200); 
+  fill(255);
+  textSize(22);
+  text("Use the Paddle to help Bigbabol exercise",width/2,height/2);
+      text("Bigbabol hate to be overweight",width/2,height/2+30);
+  fill(200);
   ellipse(ballX, ballY, r+350, r+350);
     eyeR = PApplet.parseInt(ballX);
     eyeL = PApplet.parseInt(ballY);
   drawEye();
   fill(200);
-  rect(mouseX, height-20, 100, 20);
+  rect(mouseX, height-20, 200, 20);
   //bottom
   if (ballY>= height)
   {
@@ -425,6 +435,13 @@ public void drawScene5() {
     r = r-10;
     dirY =-4;
     ballY += dirY;
+    frameZ += 2;
+    frameRate(60+frameZ);
+    println(60+frameZ);
+   fill(0);
+   textSize(38);
+   //fill(255,100,100);
+    text("Bigbabol is so happy",width/2,height/2-40);
   }
   // other situations
   else
@@ -448,20 +465,35 @@ public void drawScene5() {
     ballX+= dirX;
   }
   
-  if (r == 20){
+ if (r+350 <= 110){
+
     state +=1;
+ 
   }
+  
+  
 }
 
 
 //END
 public void drawEnding() {
-
+  r=R;
+  eyeR = width/2;
+  eyeL =height/2;
   background(254, 204, 200); 
+  fill(200);
+  ellipse(width/2, height/2,  R, R);
+  drawEye();
+  R--;
+  if(R<=110){
+    R=110;
   textSize(24);
-  fill(0);
+ 
   textAlign(CENTER);
-  text("END", height/2, width/2);
+  fill(0);
+  text("END", height/2, width/2+35);
+  }
+  
 }
 
 
@@ -483,9 +515,9 @@ public void Text2() {
   textSize(24);
   fill(0);
   textAlign(CENTER);
-  text("Just want to let you know that:", height/2, width/2-90);
+  text("Just want to let you know:", height/2, width/2-90);
   text("BigBabol hate people to change its things", height/2, width/2-60);
-  text("Time out", height/2, width/2);
+  text("Time out...", height/2, width/2);
   text("Press ALT to start again", height/2, width/2+30);
   fill(n, 204, 200);
   text("Hint: Under the drawer.", height/2, width/2+60);
@@ -531,7 +563,7 @@ public void keyPressed() {
     } else if (keyCode == UP) {
       Yball += 10;
       z +=1;
-      c+=10;
+      c+=5;
     } else if (keyCode == DOWN) {
       Yball -= 10;
       z -=1;
@@ -605,7 +637,7 @@ class Ball {
   
   
 }
-  public void settings() {  size(600, 600,P3D); }
+  public void settings() {  size(600, 600); }
   static public void main(String[] passedArgs) {
     String[] appletArgs = new String[] { "--present", "--window-color=#FECCC8", "--stop-color=#cccccc", "sketch_final" };
     if (passedArgs != null) {
