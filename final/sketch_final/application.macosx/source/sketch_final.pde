@@ -3,6 +3,7 @@ PImage bg1;
 PImage bg2;
 PImage bg3;
 PImage room2;
+PImage room3;
 int r=1;
 int n;
 int state = 0;
@@ -12,7 +13,7 @@ int R =250;
 int Xball=200;
 int Yball=200;
 int z=20;
-int c=5;
+int c=10;
 
 int eyeR;
 int eyeL;
@@ -58,6 +59,7 @@ void setup() {
   bg2 = loadImage("side2.png");
   bg3 = loadImage("side3.png");
   room2 = loadImage("room2.png");
+  room3 = loadImage("room3.png");
   for (int i = 0; i < b.length; i++) {
     b[i] = new Ball(random(0, 600), random(0, 600), color(map(i, 0, b.length, 0, 255)));
   };
@@ -145,11 +147,11 @@ void drawScene1() {
   float switch1x = 20+random(10, 50);
   float switch1y = 260;
 
-  float switch2x = 250;
-  float switch2y = 260+random(10, 30);
+  float switch2x = 230+random(10, 30);
+  float switch2y = 260;
 
-  float switch3x = 400;
-  float switch3y = 260+random(50, 70);
+  float switch3x = 380+random(50, 70);
+  float switch3y = 260;
 
   fill(200, 200, 200);
   if(r>400)
@@ -160,9 +162,9 @@ void drawScene1() {
   
   fill(0);
   textAlign(CENTER);
-  text("Ughhhh, someone has messed up my living room", width/2, 30);
-  text("Collect hints from the drawers and find the DIFFERENCE", width/2, 60);
-  text("Memorize the positions & click",width/2, 90);
+  text("Ughhhh, someone has messed up my living room", width/2, 70);
+  text("Collect hints from the drawers and find the DIFFERENCE", width/2, 100);
+  text("Memorize the positions & click",width/2, 130);
 
   drawEye();
   textSize(15);
@@ -230,7 +232,7 @@ void drawScene1() {
   text("Don't move/change My things.", height/2, width/2+60);
   text("Don't move/change My things.", height/2, width/2-90);
   text("Don't move/change My things.", height/2, width/2+90);
-    text("BigBabol can tell the difference.", height/2, width/2+120);
+    text("BigBabol HATE people do that.", height/2, width/2+120);
    }
   }
   if (r>600 ||r<0)
@@ -305,9 +307,11 @@ frameRate(40);
   
   if (n<=130){
     r=50;
+
     fill(255);
-    text("Bigbabol so happy.",width/2,330);
-    text("Bigbabol'd like to play piano for you (Click it)",width/2,360);
+    text("Bigbabol is so happy.",width/2,330);
+    text("Bigbabol'd like to play piano for you",width/2,360);
+    text("Click Piano and keep Clicking lights.",width/2,390);
    fill(254, 204, 200);
    
   if (mousePressed == true) {if (( eyeR > 510 && eyeR < 510 + 63 &&
@@ -319,7 +323,7 @@ frameRate(40);
       }
     }
   if(n<=30){
-       state+=2;}
+       state+=1;}
        
   ellipse(eyeR, eyeL, r, r);
   drawEye();
@@ -334,20 +338,24 @@ frameRate(40);
 
 //scene3
 void drawScene4() {
+  eyeR = Xball;
+  eyeL = Yball;
  switchH =40;
  switchW =100;
+ int PinkX = 121;
+ int PinkY =270;
+ int Siz =34;
  piano.pause();
-  background(254, 204, 200);
-  text("Sorry Garden,",width/2,height/3);
-  text("Bigbabol hate the garden because of bugs",width/2,height/3+30);
+  background(room3);
+  fill(200);
   text("Use the Arrow Keys to",width/2,height/3+60);
-  text("walk to the ENTRANCE",width/2,height/3+90);
+  text("walk to the EXIT",width/2,height/3+90);
   text("Watch out bugggs",width/2,height/3+120);
-  fill(20);
   ellipse(Xball, Yball, c, c);
-  if(c>25){
-  fill(255);
-  ellipse(Xball, Yball, 4, 4);}
+  drawEye();
+  //if(c>25){
+  //fill(200);
+  //ellipse(Xball, Yball, 4, 4);}
   for (int i = 0; i < NUM_WALKERS; i++) {
     int r = int(random(5));
 
@@ -370,19 +378,34 @@ void drawScene4() {
     }
     image(bug, imgX[i], imgY[i]);
  
-    if (Xball > imgX[i] && Xball+c/2 < imgX[i] + 104 &&
-      Yball > imgY[i] && Yball+c/2 < imgY[i] + 20) {
+    if((Xball > imgX[i] && Xball+c/2 < imgX[i] + 104) &&
+      (Yball > imgY[i] && Yball+c/2 < imgY[i] + 20)) {
       background(20, 100, 20);
-
-      state -=1;
+     c +=1 ;
+     fill(255);
+    text( "AHHHHHHH Bigbabol HATE Bugggggs",width/2,height/2);
+      //state -=1;
     }
   }
 
-  rect(200, 480, switchW+c, switchH+c);
-  if (( Xball+c/2 >200 && Xball-c/2 < 200 + switchW+c &&
-    Yball+c/2 > 480 && Yball-c/2 < 480 + switchH+c) ) { 
+
+    if (Xball > PinkX && Xball< PinkX + Siz &&
+      Yball > PinkY && Yball < PinkY + Siz) {
+      background(254, 204, 200);
+     c -=1 ;
+     fill(255);
+    text( "BigBaBol LOVE PINK :0",width/2,height/2);
+      //state -=1;
+    }
+    
+  rect(200, 480, switchW, switchH);
+  fill(200);
+  text("EXIT",250,510);
+  if (Xball >200 && Xball < 200 + switchW &&
+    Yball > 480 && Yball < 480 + switchH ) { 
     state +=1;
   }
+  println(c);
 }
 
 
@@ -545,11 +568,11 @@ void keyPressed() {
     } else if (keyCode == UP) {
       Yball += 10;
       z +=1;
-      c+=5;
+      c+=4;
     } else if (keyCode == DOWN) {
       Yball -= 10;
       z -=1;
-      c-=10;
+      c-=5;
     } else if (keyCode == LEFT) {
       Xball -= 10;
       c+=3;
