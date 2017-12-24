@@ -23,7 +23,7 @@ PImage bg3;
 PImage room2;
 PImage room3;
 int r=1;
-int n;
+int n=0;
 int state = 0;
 int narrator;
 int R =250;
@@ -227,7 +227,7 @@ public void drawScene1() {
       r=0;
     }else if((eyeR > 182 && eyeR < 182 + 25 &&
       eyeL > 294 && eyeL < 294 + 10)){
-     background(200,200,200);
+     background(170);
      textSize(24);
      textAlign(CENTER);
      fill(255, 204, 200);
@@ -241,7 +241,7 @@ public void drawScene1() {
     text("BigBabol can tell the difference.", height/2, width/2+120);
    }else if((eyeR > 182 && eyeR < 182 + 25 &&
       eyeL > 343 && eyeL < 343 + 10)){
-     background(200,200,200);
+     background(170);
      textSize(24);
      textAlign(CENTER);
      fill(255, 204, 200);
@@ -399,8 +399,8 @@ public void drawScene4() {
     }
     image(bug, imgX[i], imgY[i]);
  
-    if((Xball > imgX[i] && Xball+c/2 < imgX[i] + 104) &&
-      (Yball > imgY[i] && Yball+c/2 < imgY[i] + 20)) {
+    if((Xball > imgX[i] && Xball < imgX[i] + 104) &&
+      (Yball > imgY[i] && Yball< imgY[i] + 20)) {
       background(20, 100, 20);
      c +=1 ;
      fill(255);
