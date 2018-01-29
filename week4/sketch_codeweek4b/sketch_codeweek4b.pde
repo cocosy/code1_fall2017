@@ -19,7 +19,7 @@ void draw(){
   if( angle < 600 == true){
  thisIsPattern();}
   else {
- print(angle);
+ 
   r=0 ;}
   x = x +1;
   //float  y = map(mouseX, 0, width, 0, 255);

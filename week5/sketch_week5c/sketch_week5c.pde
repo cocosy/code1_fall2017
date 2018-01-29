@@ -17,8 +17,11 @@ void draw(){
   
   if(z>250){
     z=30;
-    z= z-1;}
-  else{z++;}
+    z= z-1;
+  }
+  else{
+    z++;
+}
 
     for (int i = 0; i <= width; i+=40) {
     for(int j=0; j<=height; j+=40){
